@@ -1,6 +1,6 @@
 {
   "name": "ts-axios-hxy",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "typescript request http lib",
   "keywords":  [
     "typescript",
