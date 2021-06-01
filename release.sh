@@ -17,4 +17,5 @@ then
 
   # publish
   npm publish
+  npm run deploy-docs
 fi
