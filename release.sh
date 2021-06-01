@@ -13,7 +13,9 @@ then
   git commit -m "[build] $VERSION"
   npm version $VERSION --message "[release] $VERSION"
   git push origin master
+  npm config set registry=http://registry.npmjs.org
 
   # publish
-  npm publish registry=http://registry.npmjs.org
+  npm publish
+  npm config set registry https://registry.npm.taobao.org
 fi
