@@ -1,27 +1,31 @@
 {
-  "name": "ts-axios",
-  "version": "0.0.0",
-  "description": "",
-  "keywords": [],
-  "main": "dist/ts-axios.umd.js",
-  "module": "dist/ts-axios.es5.js",
-  "typings": "dist/types/ts-axios.d.ts",
+  "name": "ts-axios-hxy",
+  "version": "0.0.1",
+  "description": "typescript request http lib",
+  "keywords":  [
+    "typescript",
+    "XMLHttpRequest"
+  ],
+  "main": "dist/axios.umd.js",
+  "module": "dist/axios.es5.js",
+  "typings": "dist/types/index.d.ts",
   "files": [
     "dist"
   ],
-  "author": "hw_18114021181 <huxingyi@depthsdata.com>",
+  "author": "huxingyi1997 <huxingyi1997@sina.com>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/huxingyi1997/ts-axios"
   },
   "license": "MIT",
   "engines": {
     "node": ">=6.0.0"
   },
   "scripts": {
+    "dev": "node examples/server.js",
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
-    "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
+    "build": "tsc -p tsconfig.build.json --module commonjs && rollup -c rollup.config.ts && typedoc --tsconfig tsconfig.build.json --out docs --target es6 --theme minimal --mode file src",
     "start": "rollup -c rollup.config.ts -w",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
@@ -32,7 +36,9 @@
     "semantic-release": "semantic-release",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
     "precommit": "lint-staged",
-    "travis-deploy-once": "travis-deploy-once"
+    "travis-deploy-once": "travis-deploy-once",
+    "prepub": "npm run test:prod && npm run build",
+    "pub": "sh release.sh"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
@@ -49,7 +55,7 @@
     "transform": {
       ".(ts|tsx)": "ts-jest"
     },
-    "testEnvironment": "node",
+    "testEnvironment": "jsdom",
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "moduleFileExtensions": [
       "ts",
@@ -69,7 +75,11 @@
       }
     },
     "collectCoverageFrom": [
-      "src/*.{js,ts}"
+      "src/*.{js,ts}",
+      "src/**/*.{js,ts}"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/boot.ts"
     ]
   },
   "prettier": {
@@ -84,20 +94,33 @@
   "devDependencies": {
     "@commitlint/cli": "^7.1.2",
     "@commitlint/config-conventional": "^7.1.2",
-    "@types/jest": "^23.3.2",
+    "@types/jasmine-ajax": "^3.3.2",
+    "@types/jest": "^25.1.3",
     "@types/node": "^10.11.0",
+    "@types/nprogress": "^0.2.0",
+    "@types/qs": "^6.9.5",
+    "atob": "^2.1.2",
+    "body-parser": "^1.19.0",
     "colors": "^1.3.2",
     "commitizen": "^3.0.0",
+    "connect-multiparty": "^2.2.0",
+    "cookie-parser": "^1.4.5",
     "coveralls": "^3.0.2",
     "cross-env": "^5.2.0",
+    "css-loader": "^5.1.1",
     "cz-conventional-changelog": "^2.1.0",
+    "express": "^4.17.1",
     "husky": "^1.0.1",
-    "jest": "^23.6.0",
-    "jest-config": "^23.6.0",
+    "jasmine-ajax": "^4.0.0",
+    "jasmine-core": "^3.6.0",
+    "jest": "^25.1.0",
+    "jest-config": "^25.1.0",
     "lint-staged": "^8.0.0",
     "lodash.camelcase": "^4.3.0",
+    "nprogress": "^0.2.0",
     "prettier": "^1.14.3",
     "prompt": "^1.0.0",
+    "qs": "^6.9.6",
     "replace-in-file": "^3.4.2",
     "rimraf": "^2.6.2",
     "rollup": "^0.67.0",
@@ -108,13 +131,19 @@
     "rollup-plugin-typescript2": "^0.18.0",
     "semantic-release": "^15.9.16",
     "shelljs": "^0.8.3",
+    "style-loader": "^2.0.0",
     "travis-deploy-once": "^5.0.9",
-    "ts-jest": "^23.10.2",
+    "ts-jest": "^25.2.1",
+    "ts-loader": "^8.0.17",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
     "tslint-config-standard": "^8.0.1",
+    "tslint-loader": "^3.5.4",
     "typedoc": "^0.12.0",
-    "typescript": "^3.0.3"
+    "typescript": "^3.4.5",
+    "webpack": "^5.24.0",
+    "webpack-dev-middleware": "^4.1.0",
+    "webpack-hot-middleware": "^2.25.0"
   }
 }

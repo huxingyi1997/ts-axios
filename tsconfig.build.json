@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "types": [],
+    "skipLibCheck": true,
     "moduleResolution": "node",
     "target": "es5",
     "module": "es2015",
@@ -11,8 +13,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "declarationDir": "dist/types",
-    "outDir": "dist/lib",
-    "typeRoots": ["node_modules/@types"]
+    "outDir": "dist/lib"
   },
   "include": ["src"]
 }
