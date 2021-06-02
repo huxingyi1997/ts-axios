@@ -45,26 +45,26 @@ git clone git@github.com:huxingyi1997/ts-axios.git
 **使用 cdn:**
 
 ```html
-<script src="https://unpkg.com/ts-axios-hxy/dist/axios.es5.js"></script>
+<script src="https://unpkg.com/ts-axios-hxy/dist/axios.es5.js" type="module"></script>
 ```
 
 或者
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/ts-axios-hxy/dist/axios.es5.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ts-axios-hxy/dist/axios.es5.js" type="module"></script>
 ```
 
 ## 手把手教程
 
 可以参考我的博客[TypeScript重构axios](https://hxy1997.xyz/2021/05/13/TypeScript%E9%87%8D%E6%9E%84axios/)
 
-更推荐文档[TypeScript 从零实现 axios](https://hxy1997.xyz/ts-axios-doc/)
+更推荐文档[TypeScript 从零实现 axios](https://hxy1997.xyz/ts-axios-doc/)，包含了TypeScript基础知识，各段落分割很清晰，值得使用
 
 ## 使用说明
 
-参考[接口文档](https://hxy1997.xyz/ts-axios)
+参考[接口文档](https://hxy1997.xyz/ts-axios)，该文档是自动生成的，能力有限，请多多包涵
 
-需要通过全名导入axios
+使用前需要通过全名导入axios
 
 ```javascript
 import axios from 'ts-axios-hxy'
@@ -214,21 +214,21 @@ const instance = axios.create({
 
 以下是可用的实例方法。指定的配置将与实例的配置合并。
 
-##### axios#request(config)
+##### axios.request(config)
 
-##### axios#get(url[, config])
+##### axios.get(url[, config])
 
-##### axios#delete(url[, config])
+##### axios.delete(url[, config])
 
-##### axios#head(url[, config])
+##### axios.head(url[, config])
 
-##### axios#options(url[, config])
+##### axios.options(url[, config])
 
-##### axios#post(url[, data[, config]])
+##### axios.post(url[, data[, config]])
 
-##### axios#put(url[, data[, config]])
+##### axios.put(url[, data[, config]])
 
-##### axios#patch(url[, data[, config]])
+##### axios.patch(url[, data[, config]])
 
 ## 请求配置
 
